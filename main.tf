@@ -122,7 +122,6 @@ resource "aws_route_table_association" "public-b-association" {
 # -- NAT Gateways
 # -- -- NAT A
 resource "aws_eip" "nat-a" {
-  domain = "vpc"
   tags = {
     "Name" = "${local.vpc_name}-NAT-a"
   }
@@ -130,7 +129,6 @@ resource "aws_eip" "nat-a" {
 
 # -- -- NAT B
 resource "aws_eip" "nat-b" {
-  domain = "vpc"
   tags = {
     "Name" = "${local.vpc_name}-NAT-b"
   }
@@ -189,7 +187,6 @@ resource "aws_route_table_association" "private-a-association" {
   subnet_id      = aws_subnet.private-subnet-a.id
   route_table_id = aws_route_table.private-route-a.id
 }
-
 resource "aws_route_table_association" "private-b-association" {
   subnet_id      = aws_subnet.private-subnet-b.id
   route_table_id = aws_route_table.private-route-b.id
